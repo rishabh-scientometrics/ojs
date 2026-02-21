@@ -142,14 +142,14 @@ sandbox = Off
 
 [database]
 
-driver = mysqli
-host = localhost
-username = ojs
-password = ojs
+driver = postgres
+host = ojs-db
+username = ojuser
+password = z2hG5Wu3npGwbcETu1sPUfh3ZIMlPOeu
 name = ojs
 
 ; Set the non-standard port and/or socket, if used
-; port = 3306
+; port = 5432
 ; unix_socket = /var/run/mysqld/mysqld.sock
 
 ; Database collation
@@ -212,7 +212,7 @@ connection_charset = utf8
 ; Complete path to directory to store uploaded files
 ; (This directory should not be directly web-accessible)
 ; Windows users should use forward slashes
-files_dir = files
+files_dir = /var/www/html/files
 
 ; Path to the directory to store public uploaded files
 ; (This directory should be web-accessible and the specified path
@@ -533,7 +533,8 @@ xslt_command = ""
 show_stacktrace = Off
 
 ; Display an error message when something goes wrong.
-display_errors = Off
+display_errors = On
+error_reporting = E_ALL
 
 ; Display deprecation warnings
 deprecation_warnings = Off
