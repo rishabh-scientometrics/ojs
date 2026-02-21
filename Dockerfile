@@ -43,6 +43,9 @@ WORKDIR /var/www/html
 
 # Copy OJS source
 COPY . /var/www/html
+# Create config.inc.php from template
+RUN cp config.TEMPLATE.inc.php config.inc.php
+RUN chown -R www-data:www-data /var/www/html
 
 # Install OJS vendor dependencies (CORRECT PATH)
 RUN composer install --no-dev --optimize-autoloader --working-dir=lib/pkp
