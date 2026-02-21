@@ -57,4 +57,8 @@ RUN composer install --no-dev --optimize-autoloader --working-dir=lib/pkp
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
+# Apache directory permissions
+RUN sed -i 's|/var/www/html|/var/www/html|g' /etc/apache2/sites-available/000-default.conf \
+ && sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/c\<Directory /var/www/html>\n    AllowOverride All\n    Require all granted\n</Directory>' /etc/apache2/apache2.conf
+
 EXPOSE 80
