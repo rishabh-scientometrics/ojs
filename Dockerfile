@@ -7,32 +7,25 @@ RUN echo "display_errors=On" >> /usr/local/etc/php/php.ini \
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates \
-    unzip \
-    git \
-    curl \
+RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
     libonig-dev \
-    libpq-dev \
     libicu-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions required by OJS
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        pdo \
-        pdo_mysql \
-        pdo_pgsql \
-        zip \
-        gd \
-        mbstring \
-        bcmath \
-        intl\
-        ftp
+    unzip \
+    git \
+ && docker-php-ext-configure intl \
+ && docker-php-ext-install \
+    pdo \
+    pdo_pgsql \
+    zip \
+    gd \
+    mbstring \
+    intl \
+    bcmath \
+    opcache
 
 # Enable Apache rewrite
 RUN a2enmod rewrite
