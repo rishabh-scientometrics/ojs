@@ -1,4 +1,8 @@
 FROM php:8.2-apache
+# Force PHP error display (temporary for debugging)
+RUN echo "display_errors=On" >> /usr/local/etc/php/php.ini \
+ && echo "display_startup_errors=On" >> /usr/local/etc/php/php.ini \
+ && echo "error_reporting=E_ALL" >> /usr/local/etc/php/php.ini
 
 ENV DEBIAN_FRONTEND=noninteractive
 
