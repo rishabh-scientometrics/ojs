@@ -41,7 +41,7 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Install OJS dependencies (THIS IS THE KEY STEP)
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --working-dir=lib/pkp
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
