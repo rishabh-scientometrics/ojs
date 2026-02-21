@@ -27,7 +27,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         gd \
         mbstring \
         bcmath \
-        intl
+        intl\
+        ftp
 
 # Enable Apache rewrite
 RUN a2enmod rewrite
